@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.text.TextUtils;
 
@@ -288,6 +289,15 @@ public class ProviGenProvider extends ContentProvider {
 		getContext().getContentResolver().notifyChange(uri, null);
 		return numberOfRowsAffected;
 	}
+
+    /**
+     * Returns the used SQLiteOpenHelper in the Provider.
+     *
+     * @return The SQLiteOpenHelper of the ProviGenProvider
+     */
+    public SQLiteOpenHelper getDBOpenHelper(){
+        return openHelper;
+    }
 
 	/**
 	 * Appends the given element to a copy of the given array.
